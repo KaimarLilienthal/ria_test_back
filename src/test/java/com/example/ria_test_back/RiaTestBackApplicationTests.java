@@ -1,4 +1,4 @@
-package events.ee_ria_test_back;
+package com.example.ria_test_back;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

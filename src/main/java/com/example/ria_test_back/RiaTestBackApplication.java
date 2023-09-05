@@ -1,4 +1,4 @@
-package events.ee_ria_test_back;
+package com.example.ria_test_back;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
