@@ -13,9 +13,22 @@ public class EventService {
     private EventRepository eventRepository;
 
 
-
     public List<Event> findAllEventsBy(String status) {
         return eventRepository.findByStatus(status);
 
     }
+
+    public Event getEvent(Integer eventId) {
+        return eventRepository.findById(eventId).get();
+    }
+
+
+    public void deleteEvent(Integer eventId) {
+        eventRepository.deleteById(eventId);
+    }
+
+    public Event getEventById(Integer eventId) {
+        return eventRepository.findById(eventId).get();
+    }
+
 }
