@@ -1,4 +1,4 @@
-package com.example.ria_test_back.domain.mapper;
+package com.example.ria_test_back.entities;
 
 import com.example.ria_test_back.business.dto.ParticipantDto;
 import com.example.ria_test_back.entities.Participant;

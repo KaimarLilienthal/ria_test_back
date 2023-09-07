@@ -1,6 +1,8 @@
 package com.example.ria_test_back.business;
 
+import com.example.ria_test_back.business.dto.EventDto;
 import com.example.ria_test_back.domain.EventService;
+import com.example.ria_test_back.entities.EventMapper;
 import com.example.ria_test_back.entities.Event;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -12,9 +14,13 @@ public class EventsService {
     @Resource
     private EventService eventService;
 
+    @Resource
+    private EventMapper eventMapper;
 
 
-    public List<Event> findAllEventsByStatus(String status) {
-        return eventService.findAllEventsBy(status);
+
+    public void findAllEventsByStatus(String status) {
+        List<Event> events = eventService.findAllEventsBy(status);
+        eventMapper.
     }
 }

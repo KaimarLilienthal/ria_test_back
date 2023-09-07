@@ -13,7 +13,9 @@ public class EventService {
     private EventRepository eventRepository;
 
 
+
     public List<Event> findAllEventsBy(String status) {
         return eventRepository.findByStatus(status);
+
     }
 }
