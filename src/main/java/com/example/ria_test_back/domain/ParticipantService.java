@@ -10,7 +10,23 @@ import java.util.List;
 public class ParticipantService {
     @Resource
     private ParticipantRepository participantRepository;
-    public List<Participant> findParticipantBy(Integer eventId) {
+    public List<Participant> findParticipantsBy(Integer eventId) {
         return participantRepository.findParticipantsBy(eventId);
+    }
+
+    public void deleteParticipantBy(Integer participantId) {
+        participantRepository.deleteById(participantId);
+    }
+
+    public void addParticipant(Participant participant) {
+        participantRepository.save(participant);
+    }
+
+    public Participant findParticipantBy(Integer participantId) {
+      return participantRepository.findById(participantId).get();
+    }
+
+    public void deleteAllEventParticipants(List<Participant> participants) {
+        participantRepository.deleteAll(participants);
     }
 }

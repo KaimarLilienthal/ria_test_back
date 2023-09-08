@@ -9,4 +9,5 @@ import java.util.List;
 public interface ParticipantRepository extends JpaRepository<Participant, Integer> {
     @Query("select p from Participant p where p.event.id = ?1")
     List<Participant> findParticipantsBy(Integer id);
+
 }
