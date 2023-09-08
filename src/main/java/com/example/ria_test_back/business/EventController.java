@@ -4,10 +4,7 @@ import com.example.ria_test_back.business.dto.EventDto;
 import com.example.ria_test_back.business.dto.EventSimpleDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,9 +27,15 @@ public class EventController {
        return eventsService.getEventById(eventId);
     }
 
+    @PostMapping("/event/new")
+    @Operation(summary = "Salvestab uue Ürituse")
+    public void addNewEvent(@RequestBody EventDto eventDto) {
+        eventsService.addNewEventBy(eventDto);
+    }
 
     @DeleteMapping("/event/delete")
-    @Operation(summary = "Kustutab ürituse")
+    @Operation(summary = "Kustutab ürituse tema id järgi",
+    description = "Otsib välja Ürituse, siis kõik sellega seotud osalejad, kustutab osalejad ja siis ürituse.")
     public void deleteEvent(@RequestParam Integer eventId) {
         eventsService.deleteEvent(eventId);
     }

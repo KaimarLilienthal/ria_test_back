@@ -25,4 +25,8 @@ public class ParticipantService {
     public Participant findParticipantBy(Integer participantId) {
       return participantRepository.findById(participantId).get();
     }
+
+    public void deleteAllEventParticipants(List<Participant> participants) {
+        participantRepository.deleteAll(participants);
+    }
 }
