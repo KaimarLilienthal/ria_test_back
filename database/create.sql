@@ -27,6 +27,7 @@ CREATE TABLE participant (
                              company_payment_type varchar(255)  NULL,
                              company_info varchar(5000)  NULL,
                              event_id int  NOT NULL,
+                             status char(1)  NOT NULL,
                              CONSTRAINT participant_pk PRIMARY KEY (id)
 );
 
