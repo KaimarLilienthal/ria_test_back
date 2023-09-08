@@ -31,4 +31,5 @@ public class EventService {
         return eventRepository.findById(eventId).get();
     }
 
+
 }
