@@ -14,7 +14,7 @@ public class EventController {
     private EventsService eventsService;
 
     @GetMapping("/event")
-    @Operation(summary = "Kuvab listi kõikidest tabelis olevatest tulevastest või toimuvatest üritustest vastavalt staatusele",
+    @Operation(summary = "Kuvab listi kõikidest tabelis olevatest tulevastest või toimunud üritustest vastavalt staatusele",
             description = "Tagastab nimekirja üritustest koos infoga: id, eventName, eventDate")
     public List<EventSimpleDto> findAllEventsByStatus(@RequestParam String status) {
      return eventsService.findAllEventsByStatus(status);
