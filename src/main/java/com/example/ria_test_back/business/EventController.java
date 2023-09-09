@@ -4,14 +4,37 @@ import com.example.ria_test_back.business.dto.EventDto;
 import com.example.ria_test_back.business.dto.EventSimpleDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 public class EventController {
     @Resource
     private EventsService eventsService;
+
+    @Resource
+    private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public EventController(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    @GetMapping("/updateEventStatus")
+    @Operation(summary = "Liigitab sündmuse kas toimuvaks või toimunuks",
+            description = "Muudab ürituse staatuse vastavalt localDate, kas 'F' tulevikus ja 'P' minevikus")
+    public String updateEventStatus() {
+        LocalDate currentDate = LocalDate.now();
+
+        String updateQuery = "UPDATE event SET status = CASE WHEN event_date < ? THEN 'P' ELSE 'F' END";
+
+        int rowsUpdated = jdbcTemplate.update(updateQuery, currentDate);
+
+        return rowsUpdated + " rows updated.";
+    }
 
     @GetMapping("/event")
     @Operation(summary = "Kuvab listi kõikidest tabelis olevatest tulevastest või toimunud üritustest vastavalt staatusele",
